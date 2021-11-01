@@ -68,7 +68,7 @@ In the Gx direction, for instance, we’re multiplying the pixels to the right o
 ## Compiling:
 
 ```
-	clang -fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow -o filter filter.c helpers.c
+clang -fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow -o filter filter.c helpers.c
 ```
 
 ## Usage:
@@ -99,4 +99,5 @@ Replace -argument with `-g` for grayscale, `-s` for sepia, `-r` for reflection, 
 ./filter -e images/courtyard.bmp grayscale.bmp
 ```
 ![tower](/images/tower.bmp) `Original image`
-![tower](/edge.bmp) `Filtered with edge detection Sobel Operator`
+![tower](/edge.bmp) 
+`Filtered with edge detection Sobel Operator`
