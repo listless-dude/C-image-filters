@@ -65,15 +65,13 @@ In the Gx direction, for instance, we’re multiplying the pixels to the right o
 
 `bmp.h` contains the custom data types required for Microsoft BMP 4.0 format.
 
-`Makefile` is just the command-line code for compiling the code using `clang` compiler
-
-#### Compiling:
+## Compiling:
 
 ```
-make filter
+	clang -fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O0 -Qunused-arguments -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow -o filter filter.c helpers.c
 ```
 
-#### Usage:
+## Usage:
 
 ```
 ./filter -argument images/filename.bmp outfile.bmp
@@ -81,7 +79,7 @@ make filter
 
 Replace -argument with `-g` for grayscale, `-s` for sepia, `-r` for reflection, `-b` for blur.
 
-Examples:
+### Examples:
 
 ```
 ./filter -g images/courtyard.bmp grayscale.bmp

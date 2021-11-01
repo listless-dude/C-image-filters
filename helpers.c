@@ -151,6 +151,39 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
-    
+    int Gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}}, Gy[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
+
+    RGBTRIPLE temp[height][width];
+    for (int i = 0; i < height; i++)
+        for (int j = 0; j < width; j++)
+            temp[i][j] = image[i][j];
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            int GxR = 0, GxG = 0, GxB = 0;
+            int GyR = 0, GyG = 0, GyB = 0;
+
+            for (int x = i - 1; x <= i + 1; x++)
+            {
+                for (int y = j - 1; y <= j + 1; y++)
+                {
+                    if ((x != -1 && x != height) && (y != -1 && y != width))
+                    {
+                        GxR += temp[x][y].rgbtRed * Gx[x-i+1][y-j+1];
+                        GxG += temp[x][y].rgbtGreen * Gx[x-i+1][y-j+1];
+                        GxB += temp[x][y].rgbtBlue * Gx[x-i+1][y-j+1];
+                        GyR += temp[x][y].rgbtRed * Gy[x-i+1][y-j+1];
+                        GyG += temp[x][y].rgbtGreen * Gy[x-i+1][y-j+1];
+                        GyB += temp[x][y].rgbtBlue * Gy[x-i+1][y-j+1];
+                    }
+                }
+            }
+            image[i][j].rgbtRed = cap(round(sqrt(GxR*GxR + GyR*GyR)));
+            image[i][j].rgbtGreen = cap(round(sqrt(GxG*GxG + GyG*GyG)));
+            image[i][j].rgbtBlue = cap(round(sqrt(GxB*GxB + GyB*GyB)));
+        }
+    }
     return;
 }
