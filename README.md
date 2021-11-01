@@ -64,8 +64,17 @@ make filter
 
 Replace -argument with `-g` for grayscale, `-s` for sepia, `-r` for reflection, `-b` for blur.
 
-Example:
+Examples:
 
 ```
-./filter -argument images/courtyard.bmp results/courtyard_Grayscale.bmp
+./filter -g images/courtyard.bmp grayscale.bmp
 ```
+![courtyard](/images/courtyard.bmp) `Original Image`
+![grayscale](/grayscale.bmp) `Filtered with grayscale`
+
+```
+./filter -b images/courtyard.bmp grayscale.bmp
+```
+
+![courtyard](/images/stadium.bmp) `Original image`
+![courtyard](/blur.bmp) `Filtered with blur`
