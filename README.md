@@ -93,3 +93,10 @@ Replace -argument with `-g` for grayscale, `-s` for sepia, `-r` for reflection, 
 
 ![courtyard](/images/stadium.bmp) `Original image`
 ![courtyard](/blur.bmp) `Filtered with blur`
+
+
+```
+./filter -e images/courtyard.bmp grayscale.bmp
+```
+![tower](/images/tower.bmp) `Original image`
+![tower](/edge.bmp) `Filtered with edge detection Sobel Operator`
